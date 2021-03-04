@@ -17,14 +17,35 @@
  *
  */
 
-// TODO: some includes here
+#include <sys/socket.h>	//for socket creation
+#include <stdio.h>	//for standard input output
+#include <unistd.h>	//for closing socket
 
 int main(int argc, char **argv) {
 
 	(void) argc; // This is how an unused parameter warning is silenced.
 	(void) argv;
 
-	// TODO: some socket stuff here
+	//domain = domini de comunicació (AF_INIET for IPV4)
+	//type = tipus de comuniucació (per udp SOCK _DATAGRAM)
+	//protocol = 0 = per defecte al sistema
+
+	int sock = socket(AF_INET, SOCK_DGRAM, 0);
+
+	if(sock == -1){
+		perror("Error while creating a socket");
+		return 1;
+	}
+
+	//bind();
+
+	for(int i = 0; i < 3; i++){
+		//recvfrom();
+		//sendto();
+	}
+
+	close(sock);
 
 	return 0;
 }
+
