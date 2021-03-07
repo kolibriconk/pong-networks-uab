@@ -49,7 +49,7 @@ int main(int argc, char **argv)
 		rcv = recvfrom(sock, buff, BUFFER_SIZE, 0,
 			(struct sockaddr *) &sock_addr, &sock_addr_len);
 
-		if (sendto(sock, buff, rcv, 0, (struct sockaddr *) &sock_addr,
+		if (sendto(sock, buff,(size_t) rcv, 0, (struct sockaddr *) &sock_addr,
 			    sock_addr_len) != rcv)
 		    fprintf(stderr, "Error sending pong");
 	}
